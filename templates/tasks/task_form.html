@@ -2,24 +2,21 @@
 
 {% block content %}
 <div class="form-container">
-    <h2>Задача</h2>
+    <h2>{{ action }} задачи</h2>
     <form method="post">
         {% csrf_token %}
-        <div class="form-group">
-            <label>Название задачи</label>
-            <input type="text" class="form-input">
-        </div>
-        <div class="form-group">
-            <label>Описание</label>
-            <textarea class="form-input" rows="4"></textarea>
-        </div>
-        <div class="form-group">
-            <label>Срок выполнения</label>
-            <input type="date" class="form-input">
-        </div>
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error">{{ field.errors.0 }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
         <div class="form-buttons">
             <button type="submit" class="btn">Сохранить</button>
-            <a href="/" class="btn btn-secondary">Отмена</a>
+            <a href="{% url 'task_list' %}" class="btn btn-secondary">Отмена</a>
         </div>
     </form>
 </div>

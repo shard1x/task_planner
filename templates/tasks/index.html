@@ -16,13 +16,30 @@
             <option value="deadline_desc">По сроку ↓</option>
         </select>
         <button type="submit" class="btn">Применить</button>
-        <a href="/" class="btn btn-secondary">Сбросить</a>
+        <a href="{% url 'task_list' %}" class="btn btn-secondary">Сбросить</a>
     </form>
 </div>
 
-<a href="/create/" class="btn add-btn">+ Добавить задачу</a>
+<a href="{% url 'task_create' %}" class="btn add-btn">+ Добавить задачу</a>
 
-<div class="empty-message">
-    <p>Задач пока нет. Добавьте первую задачу!</p>
-</div>
+{% if tasks %}
+    <div class="task-list">
+        {% for task in tasks %}
+            <div class="task-card">
+                <h3>{{ task.title }}</h3>
+                {% if task.description %}
+                    <p class="task-desc">{{ task.description }}</p>
+                {% endif %}
+                <div class="task-meta">
+                    <span class="date">{{ task.deadline|date:"d.m.Y" }}</span>
+                    <span class="badge badge-{{ task.status }}">{{ task.get_status_display }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="empty-message">
+        <p>Задач пока нет. Добавьте первую задачу!</p>
+    </div>
+{% endif %}
 {% endblock %}
