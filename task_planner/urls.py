@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.views.generic import TemplateView # <--- Импортируем класс для вывода шаблона
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
