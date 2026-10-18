@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0f2419;
+    color: #d4e5d9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #1a3a2e;
+    padding: 20px;
+    border-bottom: 3px solid #4a8c5f;
+}
+
+header h1 {
+    color: #a8d5b5;
+    font-size: 24px;
+    text-align: center;
+}
+
+main {
+    flex: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+footer {
+    background-color: #1a3a2e;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: #6b9e7c;
+}
+
+.toolbar {
+    background-color: #1a3a2e;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.toolbar form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.toolbar input,
+.toolbar select {
+    padding: 8px;
+    border: 1px solid #4a8c5f;
+    border-radius: 4px;
+    background-color: #0f2419;
+    color: #d4e5d9;
+    font-size: 14px;
+}
+
+.toolbar input[type="text"] {
+    flex: 1;
+    min-width: 150px;
+}
+
+.btn {
+    padding: 8px 16px;
+    background-color: #4a8c5f;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #5fa876;
+}
+
+.btn-secondary {
+    background-color: #2d5a3d;
+}
+
+.btn-secondary:hover {
+    background-color: #3d7050;
+}
+
+.btn-danger {
+    background-color: #8c4a4a;
+}
+
+.btn-danger:hover {
+    background-color: #a65a5a;
+}
+
+.add-btn {
+    margin-bottom: 20px;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.task-card {
+    background-color: #1a3a2e;
+    border-left: 4px solid #4a8c5f;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.task-card h3 {
+    color: #a8d5b5;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.task-card .task-desc {
+    color: #a0b8a8;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.task-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    font-size: 13px;
+}
+
+.task-meta .date {
+    color: #8fb89e;
+}
+
+.badge {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.badge-new {
+    background-color: #2d5a3d;
+    color: #a8d5b5;
+}
+
+.badge-in_progress {
+    background-color: #5a4a1a;
+    color: #f0d090;
+}
+
+.badge-done {
+    background-color: #4a8c5f;
+    color: #fff;
+}
+
+.task-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+    align-items: center;
+}
+
+.task-actions form {
+    display: inline;
+}
+
+.task-actions select {
+    padding: 5px;
+    background-color: #0f2419;
+    color: #d4e5d9;
+    border: 1px solid #4a8c5f;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #1a3a2e;
+    border-radius: 6px;
+    color: #8fb89e;
+}
+
+.form-container {
+    background-color: #1a3a2e;
+    padding: 25px;
+    border-radius: 6px;
+}
+
+.form-container h2 {
+    color: #a8d5b5;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #a8d5b5;
+    font-size: 14px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    background-color: #0f2419;
+    border: 1px solid #4a8c5f;
+    border-radius: 4px;
+    color: #d4e5d9;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #6b9e7c;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.error {
+    color: #e08080;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.confirm-box {
+    background-color: #1a3a2e;
+    padding: 25px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.confirm-box h2 {
+    color: #a8d5b5;
+    margin-bottom: 15px;
+}
+
+.confirm-box p {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 20px;
+    }
+
+    .task-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toolbar form {
+        flex-direction: column;
+    }
+}

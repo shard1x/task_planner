@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="toolbar">
+    <form method="get" action="">
+        <input type="text" name="search" placeholder="Поиск по названию...">
+        <select name="status">
+            <option value="">Все статусы</option>
+            <option value="new">Новая</option>
+            <option value="in_progress">В работе</option>
+            <option value="done">Выполнена</option>
+        </select>
+        <select name="sort">
+            <option value="">Сначала новые</option>
+            <option value="deadline_asc">По сроку ↑</option>
+            <option value="deadline_desc">По сроку ↓</option>
+        </select>
+        <button type="submit" class="btn">Применить</button>
+        <a href="/" class="btn btn-secondary">Сбросить</a>
+    </form>
+</div>
+
+<a href="/create/" class="btn add-btn">+ Добавить задачу</a>
+
+<div class="empty-message">
+    <p>Задач пока нет. Добавьте первую задачу!</p>
+</div>
+{% endblock %}

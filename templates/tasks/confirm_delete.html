@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="confirm-box">
+    <h2>Удаление задачи</h2>
+    <p>Вы уверены, что хотите удалить эту задачу?</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-buttons" style="justify-content: center;">
+            <button type="submit" class="btn btn-danger">Удалить</button>
+            <a href="/" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
