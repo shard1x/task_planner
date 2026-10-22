@@ -34,6 +34,18 @@
                     <span class="date">{{ task.deadline|date:"d.m.Y" }}</span>
                     <span class="badge badge-{{ task.status }}">{{ task.get_status_display }}</span>
                 </div>
+                <div class="task-actions">
+                    <form method="post" action="{% url 'task_status' task.pk %}">
+                        {% csrf_token %}
+                        <select name="status" onchange="this.form.submit()">
+                            <option value="new" {% if task.status == 'new' %}selected{% endif %}>Новая</option>
+                            <option value="in_progress" {% if task.status == 'in_progress' %}selected{% endif %}>В работе</option>
+                            <option value="done" {% if task.status == 'done' %}selected{% endif %}>Выполнена</option>
+                        </select>
+                    </form>
+                    <a href="{% url 'task_edit' task.pk %}" class="btn btn-secondary">Редактировать</a>
+                    <a href="{% url 'task_delete' task.pk %}" class="btn btn-danger">Удалить</a>
+                </div>
             </div>
         {% endfor %}
     </div>
