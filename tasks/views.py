@@ -4,8 +4,35 @@ from .forms import TaskForm
 
 
 def task_list(request):
-    tasks = Task.objects.all().order_by('-created_at')
-    return render(request, 'tasks/index.html', {'tasks': tasks})
+    tasks = Task.objects.all()
+
+    # Поиск по названию
+    search = request.GET.get('search', '')
+    if search:
+        tasks = tasks.filter(title__icontains=search)
+
+    # Фильтр по статусу
+    status = request.GET.get('status', '')
+    if status:
+        tasks = tasks.filter(status=status)
+
+    # Сортировка по сроку
+    sort = request.GET.get('sort', '')
+    if sort == 'deadline_asc':
+        tasks = tasks.order_by('deadline')
+    elif sort == 'deadline_desc':
+        tasks = tasks.order_by('-deadline')
+    else:
+        tasks = tasks.order_by('-created_at')
+
+    context = {
+        'tasks': tasks,
+        'search': search,
+        'status_filter': status,
+        'sort': sort,
+        'status_choices': Task.STATUS_CHOICES,
+    }
+    return render(request, 'tasks/index.html', context)
 
 
 def task_create(request):

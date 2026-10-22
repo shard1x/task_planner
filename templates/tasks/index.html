@@ -3,17 +3,17 @@
 {% block content %}
 <div class="toolbar">
     <form method="get" action="">
-        <input type="text" name="search" placeholder="Поиск по названию...">
+        <input type="text" name="search" placeholder="Поиск по названию..." value="{{ search }}">
         <select name="status">
             <option value="">Все статусы</option>
-            <option value="new">Новая</option>
-            <option value="in_progress">В работе</option>
-            <option value="done">Выполнена</option>
+            {% for value, label in status_choices %}
+                <option value="{{ value }}" {% if status_filter == value %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
         </select>
         <select name="sort">
             <option value="">Сначала новые</option>
-            <option value="deadline_asc">По сроку ↑</option>
-            <option value="deadline_desc">По сроку ↓</option>
+            <option value="deadline_asc" {% if sort == 'deadline_asc' %}selected{% endif %}>По сроку ↑</option>
+            <option value="deadline_desc" {% if sort == 'deadline_desc' %}selected{% endif %}>По сроку ↓</option>
         </select>
         <button type="submit" class="btn">Применить</button>
         <a href="{% url 'task_list' %}" class="btn btn-secondary">Сбросить</a>
@@ -38,9 +38,9 @@
                     <form method="post" action="{% url 'task_status' task.pk %}">
                         {% csrf_token %}
                         <select name="status" onchange="this.form.submit()">
-                            <option value="new" {% if task.status == 'new' %}selected{% endif %}>Новая</option>
-                            <option value="in_progress" {% if task.status == 'in_progress' %}selected{% endif %}>В работе</option>
-                            <option value="done" {% if task.status == 'done' %}selected{% endif %}>Выполнена</option>
+                            {% for value, label in status_choices %}
+                                <option value="{{ value }}" {% if task.status == value %}selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
                         </select>
                     </form>
                     <a href="{% url 'task_edit' task.pk %}" class="btn btn-secondary">Редактировать</a>
